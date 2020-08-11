@@ -1,0 +1,56 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html;" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="assests/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assests/css/font-awesome.css">
+	<link rel="stylesheet" href="assests/css/style.css">
+</head>
+<body>
+	<div class="jumbotron bg-danger">
+		<h1 style="color:#fff;" class="text-center">Initialize Data</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12">
+				<div id="show"></div>
+				<div id="showForm"></div>
+				<div id="step4">
+					<div class='form-group'>
+					<div class='input-group'>
+					<input id='step4submit' type='submit' class='btn btn-success' value='ADMIN PAGE' required>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="assests/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="assests/js/tether/tether.js"></script>
+<script type="text/javascript" src="assests/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+		$.ajax({
+		url:'system/ajax/ajax.php',
+		type:'POST',
+		data:{'page':'initialize','action':'create_form'},
+		success:function(data){
+			$('#showForm').html(data);
+			$('#step1').show('slow','linear');
+			$('#step2').hide('slow','linear');
+			$('#step3').hide('slow','linear');
+			$('#step4').hide('slow','linear');
+		}
+		});
+		
+		$('#step4submit').on('click',function(){
+			window.location.href='admin/';
+		});
+		
+	});	
+</script>
+</body>
+</html>
